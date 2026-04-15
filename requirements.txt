@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-dotenv
+motor
+python-jose
+passlib[bcrypt]
+passlib[argon2]
