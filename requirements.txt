@@ -5,5 +5,8 @@ motor
 python-jose
 passlib[bcrypt]
 passlib[argon2]
+celery
+redis
 uuid
 pydantic
+python-multipart
