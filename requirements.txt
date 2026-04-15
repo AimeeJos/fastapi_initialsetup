@@ -5,3 +5,5 @@ motor
 python-jose
 passlib[bcrypt]
 passlib[argon2]
+uuid
+pydantic

@@ -8,6 +8,8 @@ from core.auth import (
     decode_token,
 )
 from core.database import db
+from models.user import User
+from uuid import uuid4
 
 router = APIRouter()
 
@@ -36,9 +38,9 @@ async def register(form_data: OAuth2PasswordRequestForm = Depends()):
     if user:
         raise HTTPException(status_code=400, detail="Username already registered")
     hashed_password = get_password_hash(form_data.password)
-    await db["users"].insert_one(
-        {"username": form_data.username, "hashed_password": hashed_password}
-    )
+    # user = User(_id=str(uuid4()), username=form_data.username, hashed_password=hashed_password)
+    user = User(username=form_data.username, hashed_password=hashed_password)
+    await db["users"].insert_one(user.dict(by_alias=True))
     return {"msg": "User registered successfully"}
 
 
